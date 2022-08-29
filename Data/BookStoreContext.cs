@@ -6,6 +6,7 @@ namespace BookStore.API.Data
         public BookStoreContext (DbContextOptions<BookStoreContext> options)
             : base (options)
         {
+        }
         // Create the table named "Books"
         public DbSet<Books> Books { get; set;}
 
@@ -16,6 +17,5 @@ namespace BookStore.API.Data
         //     base.OnConfiguring(optionsBuilder);
         // }   
 
-        }
     }
 }
