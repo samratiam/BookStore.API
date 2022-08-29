@@ -10,11 +10,11 @@ namespace BookStore.API.Data
         public DbSet<Books> Books { get; set;}
 
         // To set the database string: Approach 1
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder )
-        {
-            optionsBuilder.UseSqlServer("Server=.;Database=BookStoreAPI;");
-            base.OnConfiguring(optionsBuilder);
-        }   
+        // protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder )
+        // {
+        //     optionsBuilder.UseSqlServer("Server=.;Database=BookStoreAPI;");
+        //     base.OnConfiguring(optionsBuilder);
+        // }   
 
         }
     }
