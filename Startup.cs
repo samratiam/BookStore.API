@@ -28,8 +28,10 @@ namespace BookStore.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Approach 2: To configure connection string
-            services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=.;Database=BookStoreAPI;"));
+            //Approach 3: To configure connection string
+            services.AddDbContext<BookStoreContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("BookStoreDB"))
+            );
             services.AddControllers();
             services.AddTransient<IBookRepository, BookRepository>();
         }
