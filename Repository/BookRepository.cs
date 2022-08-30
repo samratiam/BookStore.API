@@ -54,5 +54,30 @@ namespace BookStore.API.Repository
             await _context.SaveChangesAsync();
             return book.Id;
         }
+
+        // Update a book
+        public async Task UpdateBookAsync(int bookId, BookModel bookModel)
+        {
+            // Approach 1: It hits the database twice. So, not good approach.
+            // var book = await _context.Books.FindAsync(bookId);
+            // if (book != null)
+            // {
+            //     book.Title = bookModel.Title;
+            //     book.Description = bookModel.Description;
+
+            //     await _context.SaveChangesAsync();
+            // }
+
+            // Better approach
+            var book = new Books()
+            {
+                Id = bookId,
+                Title = bookModel.Title,
+                Description = bookModel.Description
+            };
+            _context.Books.Update(book);
+            await _context.SaveChangesAsync();
+
+        }
     }
 }
