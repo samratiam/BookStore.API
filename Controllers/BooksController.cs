@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BookStore.API.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BookStore.API.Models;
 
 namespace BookStore.API.Controllers
 {
@@ -35,6 +36,14 @@ namespace BookStore.API.Controllers
                 return NotFound();
             }
             return Ok(book);
+        }
+
+        // Add a new book
+        [HttpPost("")]
+        public async Task<IActionResult> AddNewBook([FromBody] BookModel bookModel)
+        {
+            var id = await _bookRepository.AddBookAsync(bookModel);
+            return CreatedAtAction(nameof(GetBookById), new { id = id, controller = "books" }, id);
         }
     }
 
