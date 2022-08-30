@@ -8,15 +8,15 @@ namespace BookStore.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class BookController: ControllerBase
+    public class BooksController : ControllerBase
     {
         private readonly IBookRepository _bookRepository;
 
-        public BookController(IBookRepository bookRepository)
+        public BooksController(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
-        
+
         [HttpGet("")]
         public async Task<IActionResult> GetAllBooks()
         {
