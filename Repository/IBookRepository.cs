@@ -6,6 +6,7 @@ namespace BookStore.API.Repository
 {
     public interface IBookRepository
     {
-        public Task<List<BookModel>>  GetAllBooksAsync();
+        public Task<List<BookModel>> GetAllBooksAsync();
+        Task<BookModel> GetBookByIdAsync(int bookId);
     }
 }

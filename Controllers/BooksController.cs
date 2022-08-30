@@ -17,11 +17,24 @@ namespace BookStore.API.Controllers
             _bookRepository = bookRepository;
         }
 
+        // Return all books
         [HttpGet("")]
         public async Task<IActionResult> GetAllBooks()
         {
             var books = await _bookRepository.GetAllBooksAsync();
             return Ok(books);
+        }
+
+        // Return a book
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBookById(int id)
+        {
+            var book = await _bookRepository.GetBookByIdAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return Ok(book);
         }
     }
 
